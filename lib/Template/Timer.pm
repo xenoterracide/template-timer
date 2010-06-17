@@ -1,19 +1,6 @@
 package Template::Timer;
 
-use warnings;
-use strict;
-
-=head1 NAME
-
-Template::Timer - Rudimentary profiling for Template Toolkit
-
-=head1 VERSION
-
-Version 1.00
-
-=cut
-
-our $VERSION = '1.00';
+# ABSTRACT: Rudimentary profiling for Template Toolkit
 
 =head1 SYNOPSIS
 
@@ -119,12 +106,7 @@ sub _diff_disp {
 
     return sprintf( '%7.3f', Time::HiRes::tv_interval($starting_point) * 1000 );
 }
-
-
-=head1 AUTHOR
-
-Andy Lester, C<< <andy at petdance.com> >>
-
+1;
 =head1 BUGS
 
 Please report any bugs or feature requests to
@@ -139,16 +121,4 @@ Randal Schwartz,
 Bill Moseley,
 and to Gavin Estey for the original code.
 
-=head1 COPYRIGHT & LICENSE
-
-This library is free software; you can redistribute it and/or modify
-it under the terms of either the GNU Public License v3, or the Artistic
-License 2.0.
-
-    * http://www.gnu.org/copyleft/gpl.html
-
-    * http://www.opensource.org/licenses/artistic-license-2.0.php
-
 =cut
-
-1; # End of Template::Timer
