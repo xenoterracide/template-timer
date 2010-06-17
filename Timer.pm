@@ -57,7 +57,7 @@ will be doubled up, and slightly longer than the PROCESS call.
 
 =cut
 
-use base qw( Template::Context );
+use parent qw( Template::Context );
 use Time::HiRes ();
 
 our $depth = 0;
