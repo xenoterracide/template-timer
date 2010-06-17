@@ -1,4 +1,18 @@
+#
+# This file is part of Template-ShowStartStop
+#
+# This software is Copyright (c) 2010 by Caleb Cushing.
+#
+# This is free software, licensed under:
+#
+#   The Artistic License 2.0
+#
+use strict;
+use warnings;
 package Template::Timer;
+BEGIN {
+  $Template::Timer::VERSION = '1.00';
+}
 
 use base qw( Template::Context );
 use Time::HiRes ();
@@ -66,6 +80,18 @@ sub _diff_disp {
 
 # ABSTRACT: Rudimentary profiling for Template Toolkit
 
+
+__END__
+=pod
+
+=head1 NAME
+
+Template::Timer - Rudimentary profiling for Template Toolkit
+
+=head1 VERSION
+
+version 1.00
+
 =head1 SYNOPSIS
 
 Template::Timer provides inline timings of the template processing
@@ -120,4 +146,27 @@ Randal Schwartz,
 Bill Moseley,
 and to Gavin Estey for the original code.
 
+=head1 AUTHORS
+
+=over 4
+
+=item *
+
+Andy Lester
+
+=item *
+
+Caleb Cushing <xenoterracide@gmail.com>
+
+=back
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is Copyright (c) 2010 by Caleb Cushing.
+
+This is free software, licensed under:
+
+  The Artistic License 2.0
+
 =cut
+
