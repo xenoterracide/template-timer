@@ -1,6 +1,4 @@
 #!perl
-use strict;
-use warnings;
 use Template::Timer;
 use Template::Test;
 
