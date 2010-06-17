@@ -8,7 +8,7 @@ our $epoch = undef;
 our @totals;
 
 foreach my $sub ( qw( process include ) ) {
-    no strict;
+    no strict 'refs';
     my $super = __PACKAGE__->can("SUPER::$sub") or die;
     *{$sub} = sub {
         my $self = shift;
