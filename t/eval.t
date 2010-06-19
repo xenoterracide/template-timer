@@ -18,12 +18,12 @@ use Template::Test;
 $Template::Test::DEBUG = 1;
 
 my $tt = Template->new({
-	CONTEXT => Template::Timer->new,
+    CONTEXT => Template::Timer->new,
 });
 
 my $vars = {
-	place => 'hat',
-	fragment => "The cat sat on the [% place %]\n",
+    place => 'hat',
+    fragment => "The cat sat on the [% place %]\n",
 };
 
 # fake output for consistent output
