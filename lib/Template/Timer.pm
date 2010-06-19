@@ -28,12 +28,12 @@ foreach my $sub ( qw( process include ) ) {
         my $self = shift;
         my $what = shift;
 
-    my $template =
-        = ref($what) eq 'Template::Document' ? $what->name
-        : ref($what) eq 'ARRAY'              ? join( ' + ', @{$what} )
-        : ref($what) eq 'SCALAR'             ? '(evaluated block)'
-        :                                      $what
-        ;
+        my $template
+            = ref($what) eq 'Template::Document' ? $what->name
+            : ref($what) eq 'ARRAY'              ? join( ' + ', @{$what} )
+            : ref($what) eq 'SCALAR'             ? '(evaluated block)'
+            :                                      $what
+            ;
 
         my $level;
         my $processed_data;
