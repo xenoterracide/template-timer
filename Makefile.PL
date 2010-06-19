@@ -28,7 +28,8 @@ my %WriteMakefileArgs = (
   'NAME' => 'Template::ShowStartStop',
   'PREREQ_PM' => {
     'Template::Context' => '0',
-    'Time::HiRes' => '0'
+    'Time::HiRes' => '0',
+    'parent' => '0'
   },
   'VERSION' => '1.00',
   'test' => {

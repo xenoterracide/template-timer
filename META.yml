@@ -22,4 +22,5 @@ name: Template-ShowStartStop
 requires:
   Template::Context: 0
   Time::HiRes: 0
+  parent: 0
 version: 1.00
