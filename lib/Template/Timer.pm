@@ -14,7 +14,7 @@ BEGIN {
   $Template::Timer::VERSION = '1.00';
 }
 
-use base qw( Template::Context );
+use parent qw( Template::Context );
 use Time::HiRes ();
 
 our $depth = 0;
@@ -22,13 +22,13 @@ our $epoch = undef;
 our @totals;
 
 foreach my $sub ( qw( process include ) ) {
-    no strict;
+    no strict 'refs';
     my $super = __PACKAGE__->can("SUPER::$sub") or die;
     *{$sub} = sub {
         my $self = shift;
         my $what = shift;
 
-	    my $template
+        my $template
             = ref($what) eq 'Template::Document' ? $what->name
             : ref($what) eq 'ARRAY'              ? join( ' + ', @{$what} )
             : ref($what) eq 'SCALAR'             ? '(evaluated block)'
