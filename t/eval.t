@@ -17,10 +17,6 @@ use Template::Test;
 
 $Template::Test::DEBUG = 1;
 
-# fake output for consistent output
-sub Time::HiRes::gettimeofday { return 0.000; };
-sub Time::HiRes::tv_interval { return 0.000; };
-
 my $tt = Template->new({
     CONTEXT => Template::Timer->new,
 });
@@ -29,6 +25,10 @@ my $vars = {
     place => 'hat',
     fragment => "The cat sat on the [% place %]\n",
 };
+
+# fake output for consistent output
+sub Time::HiRes::gettimeofday { return 0.000; };
+sub Time::HiRes::tv_interval { return 0.000; };
 
 test_expect(\*DATA, $tt, $vars);
 
