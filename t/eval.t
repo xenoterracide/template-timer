@@ -32,8 +32,11 @@ __DATA__
 -- test --
 [% fragment | eval -%]
 -- expect --
-<!-- START: process input text -->
-<!-- START: process (evaluated block) -->
 The cat sat on the hat
-<!-- STOP:  process (evaluated block) -->
-<!-- STOP:  process input text -->
+
+<!-- SUMMARY
+L1   0.014          P input text
+L2   0.188           P (evaluated block)
+L2   0.692   0.519   P (evaluated block)
+L1   0.736   0.743  P input text
+-->
