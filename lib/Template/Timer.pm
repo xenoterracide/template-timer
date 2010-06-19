@@ -14,13 +14,13 @@ foreach my $sub ( qw( process include ) ) {
     my $super = __PACKAGE__->can("SUPER::$sub") or die;
     *{$sub} = sub {
         my $self = shift;
-        my $what = shift;
+        my $template = shift;
 
-        my $template
-            = ref($what) eq 'Template::Document' ? $what->name
-            : ref($what) eq 'ARRAY'              ? join( ' + ', @{$what} )
-            : ref($what) eq 'SCALAR'             ? '(evaluated block)'
-            :                                      $what
+        my $template_id
+            = ref($template) eq 'Template::Document' ? $template->name
+            : ref($template) eq 'ARRAY'              ? join( ' + ', @{$template} )
+            : ref($template) eq 'SCALAR'             ? '(evaluated block)'
+            :                                          $template
             ;
 
         my $level;
@@ -34,14 +34,14 @@ foreach my $sub ( qw( process include ) ) {
             local $depth = $depth + 1;
             $level = $depth;
             $epoch_elapsed_start = _diff_disp($epoch);
-            $processed_data = $super->($self, $what, @_);
+            $processed_data = $super->($self, $template, @_);
             $epoch_elapsed_end = _diff_disp($epoch);
         }
         my $spacing = ' ' x $level;
         my $level_elapsed = _diff_disp($start);
         my $ip = uc substr( $sub, 0, 1 );
-        my $start_stats = "L$level $epoch_elapsed_start         $spacing$ip $template";
-        my $end_stats =   "L$level $epoch_elapsed_end $level_elapsed $spacing$ip $template";
+        my $start_stats = "L$level $epoch_elapsed_start         $spacing$ip $template_id";
+        my $end_stats =   "L$level $epoch_elapsed_end $level_elapsed $spacing$ip $template_id";
         @totals = ( $start_stats, @totals, $end_stats );
         if ( $level > 1 ) {
             return $processed_data;
@@ -79,7 +79,7 @@ Using Template::Timer is simple.
 
     use Template::Timer;
 
-    my %config = ( # Whatever your config is
+    my %config = ( # templateever your config is
         INCLUDE_PATH    => '/my/template/path',
         COMPILE_EXT     => '.ttc',
         COMPILE_DIR     => '/tmp/tt',
