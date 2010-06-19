@@ -8,7 +8,6 @@ SubmittingPatches.pod
 lib/Template/Timer.pm
 t/00-compile.t
 t/00-load.t
-t/000-report-versions.t
 t/eval.t
 t/pod.t
 t/release-dist-manifest.t

@@ -12,13 +12,10 @@ my %WriteMakefileArgs = (
   'ABSTRACT' => 'Rudimentary profiling for Template Toolkit',
   'AUTHOR' => 'Andy Lester, Caleb Cushing <xenoterracide@gmail.com>',
   'BUILD_REQUIRES' => {
-    'Carp' => '0',
     'File::Find' => '0',
     'File::Temp' => '0',
-    'Scalar::Util' => '0',
     'Template::Test' => '0',
-    'Test::More' => '0.94',
-    'perl' => '5.004'
+    'Test::More' => '0'
   },
   'CONFIGURE_REQUIRES' => {
     'ExtUtils::MakeMaker' => '6.31'
