@@ -1,4 +1,15 @@
 #!perl
+#
+# This file is part of Template-Timer
+#
+# This software is Copyright (c) 2010 by Andy Lester.
+#
+# This is free software, licensed under:
+#
+#   The Artistic License 2.0
+#
+use strict;
+use warnings;
 use Template::Timer;
 use Template::Test;
 
