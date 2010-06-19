@@ -14,9 +14,6 @@ BEGIN {
   $Template::Timer::VERSION = '1.00';
 }
 
-# ABSTRACT: Rudimentary profiling for Template Toolkit
-
-
 use base qw( Template::Context );
 use Time::HiRes ();
 
@@ -80,6 +77,9 @@ sub _diff_disp {
     return sprintf( '%7.3f', Time::HiRes::tv_interval($starting_point) * 1000 );
 }
 1;
+
+# ABSTRACT: Rudimentary profiling for Template Toolkit
+
 
 __END__
 =pod
