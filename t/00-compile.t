@@ -1,8 +1,8 @@
 #!perl
 #
-# This file is part of Template-ShowStartStop
+# This file is part of Template-Timer
 #
-# This software is Copyright (c) 2010 by Caleb Cushing.
+# This software is Copyright (c) 2010 by Andy Lester.
 #
 # This is free software, licensed under:
 #

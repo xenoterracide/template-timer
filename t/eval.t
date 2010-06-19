@@ -1,8 +1,8 @@
-#!perl -Tw
+#!perl
 #
-# This file is part of Template-ShowStartStop
+# This file is part of Template-Timer
 #
-# This software is Copyright (c) 2010 by Caleb Cushing.
+# This software is Copyright (c) 2010 by Andy Lester.
 #
 # This is free software, licensed under:
 #
@@ -10,33 +10,35 @@
 #
 use strict;
 use warnings;
+use Template::Timer;
+use Template::Test;
 
-use strict;
-use warnings;
+$Template::Test::DEBUG = 1;
 
-use Test::More tests => 3;
+my $tt = Template->new({
+    CONTEXT => Template::Timer->new,
+});
 
-BEGIN {
-    use_ok( 'Template' );
-}
+my $vars = {
+    place => 'hat',
+    fragment => "The cat sat on the [% place %]\n",
+};
 
-BEGIN {
-    use_ok( 'Template::Timer' );
-}
+# fake output for consistent output
+sub Time::HiRes::gettimeofday { return 0.000; };
+sub Time::HiRes::tv_interval { return 0.000; };
 
-my $tt =
-    Template->new( {
-        CONTEXT => Template::Timer->new
-    } );
-
-my $block = q{[% thing = 'doohickey' %]};
-
-TODO: { # See RT # 13225
-    local $TODO = 'Problem identified but not fixed';
-    my $rc = $tt->process( \*DATA, { block => $block } );
-    ok( $rc, 'eval' );
-}
+test_expect(\*DATA, $tt, $vars);
 
 __DATA__
-[% block | eval %]
-[% thing %]
+-- test --
+[% fragment | eval -%]
+-- expect --
+The cat sat on the hat
+
+<!-- SUMMARY
+L1   0.000          P input text
+L2   0.000           P (evaluated block)
+L2   0.000   0.000   P (evaluated block)
+L1   0.000   0.000  P input text
+-->

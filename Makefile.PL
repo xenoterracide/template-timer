@@ -16,16 +16,17 @@ my %WriteMakefileArgs = (
     'File::Find' => '0',
     'File::Temp' => '0',
     'Scalar::Util' => '0',
+    'Template::Test' => '0',
     'Test::More' => '0.94',
     'perl' => '5.004'
   },
   'CONFIGURE_REQUIRES' => {
     'ExtUtils::MakeMaker' => '6.31'
   },
-  'DISTNAME' => 'Template-ShowStartStop',
+  'DISTNAME' => 'Template-Timer',
   'EXE_FILES' => [],
   'LICENSE' => 'artistic_2',
-  'NAME' => 'Template::ShowStartStop',
+  'NAME' => 'Template::Timer',
   'PREREQ_PM' => {
     'Template::Context' => '0',
     'Time::HiRes' => '0',
