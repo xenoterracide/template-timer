@@ -55,8 +55,8 @@ foreach my $sub ( qw( process include ) ) {
         );
         @totals = ();
         return "$processed_data\n$summary\n";
-    }; # sub
-} # for
+    };
+}
 
 
 sub _diff_disp {
