@@ -1,6 +1,6 @@
 package Template::Timer;
 
-use base qw( Template::Context );
+use parent qw( Template::Context );
 use Time::HiRes ();
 
 our $depth = 0;
@@ -14,12 +14,12 @@ foreach my $sub ( qw( process include ) ) {
         my $self = shift;
         my $what = shift;
 
-        my $template =
-            ref($what) eq 'ARRAY'
-                ? join( ' + ', @{$what} )
-                : ref($what)
-                    ? $what->name
-                    : $what;
+    my $template =
+        = ref($what) eq 'Template::Document' ? $what->name
+        : ref($what) eq 'ARRAY'              ? join( ' + ', @{$what} )
+        : ref($what) eq 'SCALAR'             ? '(evaluated block)'
+        :                                      $what
+        ;
 
         my $level;
         my $processed_data;
