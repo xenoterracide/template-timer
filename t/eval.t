@@ -26,6 +26,10 @@ my $vars = {
 	fragment => "The cat sat on the [% place %]\n",
 };
 
+# fake output for consistent output
+sub Time::HiRes::gettimeofday { return 0.000; };
+sub Time::HiRes::tv_interval { return 0.000; };
+
 test_expect(\*DATA, $tt, $vars);
 
 __DATA__
@@ -35,8 +39,8 @@ __DATA__
 The cat sat on the hat
 
 <!-- SUMMARY
-L1   0.014          P input text
-L2   0.188           P (evaluated block)
-L2   0.692   0.519   P (evaluated block)
-L1   0.736   0.743  P input text
+L1   0.000          P input text
+L2   0.000           P (evaluated block)
+L2   0.000   0.000   P (evaluated block)
+L1   0.000   0.000  P input text
 -->
