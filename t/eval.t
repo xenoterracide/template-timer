@@ -16,8 +16,10 @@ my $vars = {
 };
 
 # fake output for consistent output
+no warnings;
 sub Time::HiRes::gettimeofday { return 0.000; };
 sub Time::HiRes::tv_interval { return 0.000; };
+use warnings;
 
 test_expect(\*DATA, $tt, $vars);
 
