@@ -16,11 +16,11 @@ use Template::Timer;
 use Template::Test;
 
 my $tt = Template->new({
-	CONTEXT => Template::Timer->new
+    CONTEXT => Template::Timer->new
 });
 
 my $vars = {
-	var => 'world',
+    var => 'world',
 };
 
 # fake output for consistent output
