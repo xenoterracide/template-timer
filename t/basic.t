@@ -15,6 +15,8 @@ use warnings;
 use Template::Timer;
 use Template::Test;
 
+$Template::Test::DEBUG = 1;
+
 my $tt = Template->new({
     CONTEXT => Template::Timer->new
 });
@@ -35,3 +37,9 @@ __DATA__
 --test--
 hello [% var %]
 --expect--
+hello world
+
+<!-- SUMMARY
+L1   0.000          P input text
+L1   0.000 0.000  P input text
+-->
