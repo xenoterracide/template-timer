@@ -10,18 +10,19 @@
 #
 use strict;
 use warnings;
+use strict;
+use warnings;
 use Template::Timer;
 use Template::Test;
 
 $Template::Test::DEBUG = 1;
 
 my $tt = Template->new({
-    CONTEXT => Template::Timer->new,
+    CONTEXT => Template::Timer->new
 });
 
 my $vars = {
-    place => 'hat',
-    fragment => "The cat sat on the [% place %]\n",
+    var => 'world',
 };
 
 # fake output for consistent output
@@ -33,14 +34,12 @@ use warnings;
 test_expect(\*DATA, $tt, $vars);
 
 __DATA__
--- test --
-[% fragment | eval -%]
--- expect --
-The cat sat on the hat
+--test--
+hello [% var %]
+--expect--
+hello world
 
 <!-- SUMMARY
 L1   0.000          P input text
-L2   0.000           P (evaluated block)
-L2   0.000   0.000   P (evaluated block)
 L1   0.000   0.000  P input text
 -->
