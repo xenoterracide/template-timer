@@ -4,10 +4,13 @@ author:
   - 'Andy Lester'
   - 'Caleb Cushing <xenoterracide@gmail.com>'
 build_requires:
+  Carp: 0
   File::Find: 0
   File::Temp: 0
+  Scalar::Util: 0
   Template::Test: 0
-  Test::More: 0
+  Test::More: 0.94
+  perl: 5.004
 configure_requires:
   ExtUtils::MakeMaker: 6.31
 dynamic_config: 0
@@ -16,7 +19,7 @@ license: artistic_2
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
   version: 1.4
-name: Template-ShowStartStop
+name: Template-Timer
 requires:
   Template::Context: 0
   Time::HiRes: 0

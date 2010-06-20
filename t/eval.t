@@ -1,15 +1,13 @@
 #!perl
 #
-# This file is part of Template-ShowStartStop
+# This file is part of Template-Timer
 #
-# This software is Copyright (c) 2010 by Caleb Cushing.
+# This software is Copyright (c) 2010 by Andy Lester.
 #
 # This is free software, licensed under:
 #
 #   The Artistic License 2.0
 #
-use strict;
-use warnings;
 use strict;
 use warnings;
 use Template::Timer;
@@ -27,8 +25,10 @@ my $vars = {
 };
 
 # fake output for consistent output
+no warnings;
 sub Time::HiRes::gettimeofday { return 0.000; };
 sub Time::HiRes::tv_interval { return 0.000; };
+use warnings;
 
 test_expect(\*DATA, $tt, $vars);
 
