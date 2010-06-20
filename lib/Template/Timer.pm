@@ -41,6 +41,7 @@ foreach my $sub ( qw( process include ) ) {
         my $now   = [Time::HiRes::gettimeofday];
         my $start = [@{$now}];
         {
+			my $depth = $depth + 1;
             local $epoch = $epoch ? $epoch : [@{$now}];
             $level = 1;
             $epoch_elapsed_start = _diff_disp($epoch);
