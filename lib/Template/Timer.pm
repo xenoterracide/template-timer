@@ -11,10 +11,9 @@ our @totals;
 
 foreach my $sub ( qw( process include ) ) {
     no strict 'refs';
-    my $super = __PACKAGE__->can("SUPER::$sub") or die;
-    *{$sub} = sub {
+    override "$sub" => sub {
         my $self = shift;
-        my $template = shift;
+        my ( $template ) = @_;
 
         my $template_id
             = ref($template) eq 'Template::Document' ? $template->name
@@ -34,7 +33,7 @@ foreach my $sub ( qw( process include ) ) {
             local $depth = $depth + 1;
             $level = $depth;
             $epoch_elapsed_start = _diff_disp($epoch);
-            $processed_data = $super->($self, $template, @_);
+            $processed_data = super();
             $epoch_elapsed_end = _diff_disp($epoch);
         }
         my $spacing = ' ' x $level;
