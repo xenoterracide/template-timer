@@ -9,6 +9,7 @@ lib/Template/Timer.pm
 t/00-compile.t
 t/00-load.t
 t/000-report-versions.t
+t/basic.t
 t/eval.t
 t/pod.t
 t/release-dist-manifest.t
@@ -17,6 +18,7 @@ t/release-eol.t
 t/release-has-version.t
 t/release-kwalitee.t
 t/release-minimum-version.t
+t/release-no-tabs.t
 t/release-pod-coverage.t
 t/release-pod-syntax.t
 t/release-unused-vars.t
