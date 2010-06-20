@@ -19,11 +19,11 @@ use namespace::autoclean;
 extends qw( Template::Context );
 use Time::HiRes ();
 
-
 foreach my $sub ( qw( process include ) ) {
-	my $depth = 0;
-	my $epoch = undef;
-	my @totals;
+    my $depth = 0;
+    my $epoch = undef;
+    my @totals;
+
     override "$sub" => sub {
         my $self = shift;
         my ( $template ) = @_;
@@ -42,8 +42,8 @@ foreach my $sub ( qw( process include ) ) {
         my $now   = [Time::HiRes::gettimeofday];
         my $start = [@{$now}];
         DOIT: {
-            local $epoch = $epoch ? $epoch : [@{$now}];
-            local $depth = $depth + 1;
+            $epoch = $epoch ? $epoch : [@{$now}];
+            $depth = $depth + 1;
             $level = $depth;
             $epoch_elapsed_start = _diff_disp($epoch);
             $processed_data = super();
