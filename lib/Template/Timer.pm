@@ -19,7 +19,6 @@ use namespace::autoclean;
 extends qw( Template::Context );
 use Time::HiRes ();
 
-our $depth = 0;
 our $epoch = undef;
 our @totals;
 
@@ -43,8 +42,7 @@ foreach my $sub ( qw( process include ) ) {
         my $start = [@{$now}];
         {
             local $epoch = $epoch ? $epoch : [@{$now}];
-            local $depth = $depth + 1;
-            $level = $depth;
+            $level = 1;
             $epoch_elapsed_start = _diff_disp($epoch);
             $processed_data = super();
             $epoch_elapsed_end = _diff_disp($epoch);
