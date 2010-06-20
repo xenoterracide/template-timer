@@ -36,16 +36,17 @@ foreach my $sub ( qw( process include ) ) {
             ;
 
         my $level;
-        my $processed_data = super();
+        my $processed_data;
         my $epoch_elapsed_start;
         my $epoch_elapsed_end;
         my $now   = [Time::HiRes::gettimeofday];
         my $start = [@{$now}];
-        DOIT: {
+        {
             local $epoch = $epoch ? $epoch : [@{$now}];
             local $depth = $depth + 1;
             $level = $depth;
             $epoch_elapsed_start = _diff_disp($epoch);
+            $processed_data = super();
             $epoch_elapsed_end = _diff_disp($epoch);
         }
         my $spacing = ' ' x $level;
