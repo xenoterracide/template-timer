@@ -41,5 +41,5 @@ hello world
 
 <!-- SUMMARY
 L1   0.000          P input text
-L1   0.000 0.000  P input text
+L1   0.000   0.000  P input text
 -->
