@@ -17,7 +17,6 @@ BEGIN {
 use parent qw( Template::Context );
 use Time::HiRes ();
 
-our $depth = 0;
 our @totals;
 
 foreach my $sub ( qw( process include ) ) {
@@ -42,8 +41,9 @@ foreach my $sub ( qw( process include ) ) {
         my $start = [@{$now}];
         DOIT: {
 			my $epoch = undef;
+			my $depth = 0;
             $epoch = $epoch ? $epoch : [@{$now}];
-            local $depth = $depth + 1;
+            $depth = $depth + 1;
             $level = $depth;
             $epoch_elapsed_start = _diff_disp($epoch);
             $processed_data = $super->($self, $what, @_);
