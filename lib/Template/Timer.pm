@@ -24,7 +24,6 @@ our $epoch = undef;
 our @totals;
 
 foreach my $sub ( qw( process include ) ) {
-    no strict 'refs';
     override "$sub" => sub {
         my $self = shift;
         my ( $template ) = @_;
