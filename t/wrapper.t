@@ -40,24 +40,36 @@ hello [% var %]
 [%- END -%]
 [% PROCESS t/templates/how.tt -%]
 -- expect --
-<!-- START: process input text -->
-<!-- START: process t/templates/wrapper.tt -->
 Well,
 hello world
 It's a beatiful day.
-<!-- STOP:  process t/templates/wrapper.tt -->
-<!-- START: process t/templates/how.tt -->
 How are you today?
-<!-- STOP:  process t/templates/how.tt -->
-<!-- STOP:  process input text -->
+
+<!-- SUMMARY
+L1   0.000          P input text
+L2   0.000           P t/templates/how.tt
+L2   0.000           I t/templates/wrapper.tt
+L3   0.000            P t/templates/wrapper.tt
+L3   0.000   0.000    P t/templates/wrapper.tt
+L2   0.000   0.000   I t/templates/wrapper.tt
+L2   0.000   0.000   P t/templates/how.tt
+L1   0.000   0.000  P input text
+-->
 -- test --
 [% BLOCK bold   %]<b>[% content %]</b>[% END -%]
 [% BLOCK italic %]<i>[% content %]</i>[% END -%]
 [% WRAPPER bold+italic %]Hello World[% END -%]
 -- expect --
-<!-- START: process input text -->
-<!-- START: process bold -->
-<b><!-- START: process italic -->
-<i>Hello World</i><!-- STOP:  process italic -->
-</b><!-- STOP:  process bold -->
-<!-- STOP:  process input text -->
+<b><i>Hello World</i></b>
+<!-- SUMMARY
+L1   0.000          P input text
+L2   0.000           I bold
+L3   0.000            P bold
+L2   0.000           I italic
+L3   0.000            P italic
+L3   0.000   0.000    P italic
+L2   0.000   0.000   I italic
+L3   0.000   0.000    P bold
+L2   0.000   0.000   I bold
+L1   0.000   0.000  P input text
+-->
