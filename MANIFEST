@@ -21,3 +21,6 @@ t/release-no-tabs.t
 t/release-pod-coverage.t
 t/release-pod-syntax.t
 t/release-unused-vars.t
+t/templates/how.tt
+t/templates/wrapper.tt
+t/wrapper.t
